@@ -5,7 +5,7 @@ services:
     image: andrius/asterisk:18-current
     network_mode: host
     volumes:
-      - /mnt/TANK/docker/asterisk/etc:/etc/asterisk:ro
+      - /mnt/TANK/docker/asterisk/etc:/etc/asterisk
       - /mnt/TANK/docker/asterisk/var/sounds:/var/lib/asterisk/sounds
       - /mnt/TANK/docker/asterisk/var/keys:/var/lib/asterisk/keys
     ports:
