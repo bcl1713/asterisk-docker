@@ -19,9 +19,9 @@ services:
       - "5038:5038/tcp"
     command: >
       sh -c "
-        mkdir -p /etc/asterisk &&
+        mkdir -p /etc/asterisk /var/log/asterisk /var/spool/asterisk &&
         chown -R asterisk:asterisk /etc/asterisk /var/log/asterisk /var/spool/asterisk &&
-        asterisk -f -vvv -g -c
+        exec asterisk -f -vvv -g -c
       "
     environment:
       - TZ=UTC
