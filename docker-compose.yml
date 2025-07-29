@@ -2,7 +2,7 @@ services:
   asterisk:
     container_name: asterisk
     restart: unless-stopped
-    image: asterisk:18
+    image: andrius/asterisk:18-current
     network_mode: host
     volumes:
       - /mnt/TANK/docker/asterisk/etc:/etc/asterisk:ro
