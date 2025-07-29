@@ -2,13 +2,12 @@ services:
   asterisk:
     container_name: asterisk
     restart: unless-stopped
-    image: andrius/asterisk:18-current
+    image: asterisk:18
     network_mode: host
-    privileged: true
     volumes:
-      - /mnt/TANK/docker/asterisk/etc:/etc/asterisk
-      - /mnt/TANK/docker/asterisk/var:/var/lib/asterisk
+      - /mnt/TANK/docker/asterisk/etc:/etc/asterisk:ro
       - /mnt/TANK/docker/asterisk/var/sounds:/var/lib/asterisk/sounds
+      - /mnt/TANK/docker/asterisk/var/keys:/var/lib/asterisk/keys
     ports:
       # SIP signaling
       - "5060:5060/udp"
@@ -17,12 +16,6 @@ services:
       - "10000-10100:10000-10100/udp" # RTP media
       # Asterisk Manager Interface
       - "5038:5038/tcp"
-    command: >
-      sh -c "
-        mkdir -p /etc/asterisk /var/log/asterisk /var/spool/asterisk &&
-        chown -R asterisk:asterisk /etc/asterisk /var/log/asterisk /var/spool/asterisk &&
-        exec asterisk -f -vvv -g -c
-      "
     environment:
       - TZ=UTC
       - ASTERISK_UID=1000
