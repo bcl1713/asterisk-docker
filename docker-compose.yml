@@ -13,7 +13,7 @@ services:
       - "5060:5060/udp"
       - "5060:5060/tcp"
       # RTP media ports
-      - "10000-10100:10000-10100/udp" # RTP media
+      - "10000-20000:10000-20000/udp" # RTP media
       # Asterisk Manager Interface
       - "5038:5038/tcp"
     environment:
